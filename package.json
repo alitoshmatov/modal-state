@@ -1,0 +1,48 @@
+{
+  "name": "modal-state",
+  "version": "0.1.0",
+  "description": "Control your modal more easily with useModal hook",
+  "author": "Ali Toshmatov",
+  "license": "MIT",
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "keywords": [
+    "modal",
+    "react",
+    "useModal",
+    "modal hook"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alitoshmatov/modal-state.git"
+  },
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
